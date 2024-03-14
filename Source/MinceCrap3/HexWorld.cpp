@@ -21,23 +21,41 @@ void AHexWorld::CreateHex()
         for (int i = 0; i < size; i++)
         {
             // Define vertices for a hex
-             //1
-            Vertices.Add(FVector(0 + offset_x, 0 + offset, 0));
+            //1
             Vertices.Add(FVector(0 + offset_x, 100 + offset, 0));
-            Vertices.Add(FVector(50 + offset_x, 86.6 + offset, 0));
-          
-            for (int k = triangle_offset; k < triangle_offset +3; k++)
+            Vertices.Add(FVector(86.6 + offset_x, 50 + offset, 0));
+            Vertices.Add(FVector(0 + offset_x, 0 + offset, 0));
+            //2
+            Vertices.Add(FVector(86.6 + offset_x, 50 + offset, 0));
+            Vertices.Add(FVector(86.6 + offset_x, -50 + offset, 0));
+            Vertices.Add(FVector(0 + offset_x, 0 + offset, 0));
+            //3
+            Vertices.Add(FVector(86.6 + offset_x, -50 + offset, 0));
+            Vertices.Add(FVector(0 + offset_x, -100 + offset, 0));
+            Vertices.Add(FVector(0 + offset_x, 0 + offset, 0));
+            //4
+            Vertices.Add(FVector(0 + offset_x, -100 + offset, 0));
+            Vertices.Add(FVector(-86.6 + offset_x, -50 + offset, 0));
+            Vertices.Add(FVector(0 + offset_x, 0 + offset, 0));
+            //5
+            Vertices.Add(FVector(-86.6 + offset_x, -50 + offset, 0));
+            Vertices.Add(FVector(-86.6 + offset_x, 50 + offset, 0));
+            Vertices.Add(FVector(0 + offset_x, 0 + offset, 0));
+            //6
+            Vertices.Add(FVector(-86.6 + offset_x, 50 + offset, 0));
+            Vertices.Add(FVector(0 + offset_x, 100 + offset, 0));
+            Vertices.Add(FVector(0 + offset_x, 0 + offset, 0));
+            for (int k = triangle_offset; k < triangle_offset +18; k++)
             {
                 Triangles.Add(k);
-                //Triangles.Add(1);
-                //Triangles.Add(2);
             }
-            triangle_offset += 3;
+            triangle_offset += 18;
             offset += 200;
 
         }
         offset_x += 200;
     }
+
     ProceduralMesh->CreateMeshSection_LinearColor(0, Vertices, Triangles, TArray<FVector>(), TArray<FVector2D>(), TArray<FLinearColor>(), TArray<FProcMeshTangent>(), true);
 
     // Update mesh collision if necessary
