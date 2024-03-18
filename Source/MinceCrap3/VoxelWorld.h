@@ -5,16 +5,16 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "ProceduralMeshComponent.h"
-#include "HexWorld.generated.h"
+#include "VoxelWorld.generated.h"
 
 UCLASS()
-class MINCECRAP3_API AHexWorld : public AActor
+class MINCECRAP3_API AVoxelWorld : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AHexWorld();
+	AVoxelWorld();
 
 protected:
 	// Called when the game starts or when spawned
@@ -23,9 +23,9 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	void CreateHex();
-	UFUNCTION(CallInEditor, BlueprintCallable, Category = "Hex")
-	void EraseHex(int Row, int Col);
+	void CreateVoxel();
+	UFUNCTION(CallInEditor, BlueprintCallable, Category = "Voxel")
+	void EraseVoxel(int x, int y);
 	void Refresh();
 	UPROPERTY(EditAnywhere)
 	int  size;
@@ -33,7 +33,6 @@ public:
 	UProceduralMeshComponent* ProceduralMesh;
 	UPROPERTY(EditAnywhere)
 	TArray<UMaterial*> MATS;
-	//UPROPERTY(VisibleAnywhere)
 	TArray<FVector> Vertices;
 	//UPROPERTY(VisibleAnywhere)
 	TArray<int32> Triangles;
